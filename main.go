@@ -33,7 +33,9 @@ func main() {
 
 	authController := controller.NewAuthController(authService)
 
-	routes := router.NewRouter(authController)
+	usersController := controller.NewUsercontroller(userRespository)
+
+	routes := router.NewRouter(userRespository, authController, usersController)
 
 	server := http.Server{
 		Addr:    ":8000",
